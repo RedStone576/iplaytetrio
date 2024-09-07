@@ -1,36 +1,22 @@
+document.getElementById("a").addEventListener("click", () => urmom("a"))
+document.getElementById("b").addEventListener("click", () => urmom("b"))
+document.getElementById("c").addEventListener("click", () => urmom("c"))
+
+let lastToggled = "b"
+
 function urmom(h)
 {
     const el = document.getElementById(h)
 
-    el.classList.toggle("checkmark")
-    el.classList.toggle("notCheckmark")
+    toggle(el)
 
-    const a = document.getElementById("a")
-    const b = document.getElementById("b")
-    const c = document.getElementById("c")
+    if (a.classList.contains("checkmark") && b.classList.contains("checkmark") && c.classList.contains("checkmark")) toggle(document.getElementById(lastToggled))
 
-    if (a.classList.contains("checkmark") && b.classList.contains("checkmark") && c.classList.contains("checkmark"))
-    {
-        if (h === "a") 
-        {
-            a.classList.toggle("checkmark") 
-            a.classList.toggle("notCheckmark")
-        }
-
-        else if (h === "b") 
-        {
-            b.classList.toggle("checkmark") 
-            b.classList.toggle("notCheckmark")
-        }
-
-        else if (h === "c") 
-        {
-            c.classList.toggle("checkmark") 
-            c.classList.toggle("notCheckmark")
-        }
-    }
+    if (el.classList.contains("checkmark")) lastToggled = h
 }
 
-a.addEventListener("click", () => urmom("a"))
-b.addEventListener("click", () => urmom("b"))
-c.addEventListener("click", () => urmom("c"))
+function toggle(x)
+{
+    x.classList.toggle("checkmark")
+    x.classList.toggle("notCheckmark")
+}
